@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/homeFragment">
+
+    <fragment
+        android:id="@+id/homeFragment"
+        android:name="com.canvascue.ui.home.HomeFragment"
+        android:label="Home">
+        <action
+            android:id="@+id/action_home_to_workspace"
+            app:destination="@id/workspaceFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/workspaceFragment"
+        android:name="com.canvascue.ui.workspace.WorkspaceFragment"
+        android:label="Workspace">
+        <action
+            android:id="@+id/action_workspace_to_editor"
+            app:destination="@id/editorFragment">
+            <argument
+                android:name="projectId"
+                app:argType="long" />
+        </action>
+    </fragment>
+
+    <fragment
+        android:id="@+id/editorFragment"
+        android:name="com.canvascue.ui.editor.EditorFragment"
+        android:label="Editor">
+        <argument
+            android:name="projectId"
+            app:argType="long" />
+    </fragment>
+
+</navigation>

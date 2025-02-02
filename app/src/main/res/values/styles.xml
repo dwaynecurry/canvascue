@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Text Appearances -->
+    <style name="TextAppearance.CanvasCue.Display" parent="TextAppearance.MaterialComponents.Headline2">
+        <item name="android:textSize">@dimen/text_display</item>
+        <item name="android:textColor">@color/text_primary</item>
+        <item name="android:fontFamily">@font/poppins_bold</item>
+    </style>
+
+    <style name="TextAppearance.CanvasCue.Headline" parent="TextAppearance.MaterialComponents.Headline4">
+        <item name="android:textSize">@dimen/text_headline</item>
+        <item name="android:textColor">@color/text_primary</item>
+        <item name="android:fontFamily">@font/poppins_bold</item>
+    </style>
+
+    <style name="TextAppearance.CanvasCue.Title" parent="TextAppearance.MaterialComponents.Headline6">
+        <item name="android:textSize">@dimen/text_title</item>
+        <item name="android:textColor">@color/text_primary</item>
+        <item name="android:fontFamily">@font/poppins_medium</item>
+    </style>
+
+    <style name="TextAppearance.CanvasCue.Subtitle" parent="TextAppearance.MaterialComponents.Subtitle1">
+        <item name="android:textSize">@dimen/text_subtitle</item>
+        <item name="android:textColor">@color/text_secondary</item>
+        <item name="android:fontFamily">@font/poppins_regular</item>
+    </style>
+
+    <style name="TextAppearance.CanvasCue.Body" parent="TextAppearance.MaterialComponents.Body1">
+        <item name="android:textSize">@dimen/text_body</item>
+        <item name="android:textColor">@color/text_primary</item>
+        <item name="android:fontFamily">@font/poppins_regular</item>
+    </style>
+
+    <!-- Button Styles -->
+    <style name="Widget.CanvasCue.Button" parent="Widget.MaterialComponents.Button">
+        <item name="android:minHeight">@dimen/button_height</item>
+        <item name="android:textAppearance">@style/TextAppearance.CanvasCue.Button</item>
+        <item name="cornerRadius">@dimen/button_corner_radius</item>
+        <item name="android:letterSpacing">0</item>
+    </style>
+
+    <style name="TextAppearance.CanvasCue.Button" parent="TextAppearance.MaterialComponents.Button">
+        <item name="android:textSize">@dimen/text_subtitle</item>
+        <item name="android:fontFamily">@font/poppins_medium</item>
+    </style>
+
+    <!-- Card Styles -->
+    <style name="Widget.CanvasCue.Card" parent="Widget.MaterialComponents.CardView">
+        <item name="cardCornerRadius">@dimen/card_corner_radius</item>
+        <item name="cardElevation">@dimen/card_elevation</item>
+        <item name="contentPadding">@dimen/spacing_medium</item>
+    </style>
+
+    <!-- Toolbar Style -->
+    <style name="Widget.CanvasCue.Toolbar" parent="Widget.MaterialComponents.Toolbar.Primary">
+        <item name="android:background">@android:color/transparent</item>
+        <item name="android:elevation">0dp</item>
+        <item name="titleTextAppearance">@style/TextAppearance.CanvasCue.Title</item>
+    </style>
+
+    <!-- Switch Style -->
+    <style name="Widget.CanvasCue.Switch" parent="Widget.MaterialComponents.CompoundButton.Switch">
+        <item name="android:textAppearance">@style/TextAppearance.CanvasCue.Body</item>
+        <item name="android:padding">@dimen/spacing_medium</item>
+    </style>
+
+    <!-- Slider Style -->
+    <style name="Widget.CanvasCue.Slider" parent="Widget.MaterialComponents.Slider">
+        <item name="labelBehavior">floating</item>
+        <item name="android:valueFrom">0.0</item>
+        <item name="android:valueTo">100.0</item>
+    </style>
+
+    <!-- Progress Indicator Style -->
+    <style name="Widget.CanvasCue.LinearProgressIndicator" parent="Widget.MaterialComponents.LinearProgressIndicator">
+        <item name="trackCornerRadius">8dp</item>
+        <item name="trackThickness">4dp</item>
+    </style>
+</resources>
