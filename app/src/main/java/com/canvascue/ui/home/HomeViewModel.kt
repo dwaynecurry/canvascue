@@ -64,27 +64,14 @@ class HomeViewModel @Inject constructor(
     }
 }
 
-data class HomeUiState(
-    val isLoading: Boolean = false,
-    val recentWorks: List<PaintProject> = emptyList(),
-    val tips: List<Tip> = emptyList(),
-    val projectCount: Int = 0,
-    val totalHours: Int = 0,
-    val error: String? = null
-) {
-    companion object {
-        val Loading = HomeUiState(isLoading = true)
-        fun Success(
-            recentWorks: List<PaintProject>,
-            tips: List<Tip>,
-            projectCount: Int,
-            totalHours: Int
-        ) = HomeUiState(
-            recentWorks = recentWorks,
-            tips = tips,
-            projectCount = projectCount,
-            totalHours = totalHours
-        )
-        fun Error(message: String) = HomeUiState(error = message)
-    }
+// Replace HomeUiState class with:
+sealed class HomeUiState {
+    object Loading : HomeUiState()
+    data class Success(
+        val recentWorks: List<PaintProject>,
+        val tips: List<Tip>,
+        val projectCount: Int,
+        val totalHours: Int
+    ) : HomeUiState()
+    data class Error(val message: String) : HomeUiState()
 }

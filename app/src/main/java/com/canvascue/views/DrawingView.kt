@@ -7,6 +7,7 @@ import android.view.MotionEvent
 import android.view.View
 import androidx.core.graphics.withSave
 import kotlin.math.abs
+private const val DEFAULT_BRUSH_SIZE = 20f
 
 class DrawingView @JvmOverloads constructor(
     context: Context,
@@ -168,7 +169,8 @@ class DrawingView @JvmOverloads constructor(
         redoList.clear()
     }
 
-    private data class PathProperties(
+    // Replace PathProperties with:
+    data class PathProperties(
         val path: Path,
         val color: Int,
         val brushSize: Float,

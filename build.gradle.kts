@@ -12,6 +12,8 @@ buildscript {
         classpath("org.jetbrains.kotlin:kotlin-gradle-plugin:1.9.0")  // Back to the working version
         classpath("com.google.dagger:hilt-android-gradle-plugin:2.50")
         classpath("androidx.navigation:navigation-safe-args-gradle-plugin:2.7.6")
+        classpath("androidx.navigation:navigation-safe-args-gradle-plugin:2.7.6")
+
     }
 }
 

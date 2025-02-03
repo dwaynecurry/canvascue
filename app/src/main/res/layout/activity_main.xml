@@ -6,10 +6,10 @@
     android:fitsSystemWindows="true">
 
     <com.google.android.material.appbar.AppBarLayout
-        android:id="@+id/appBarLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@android:color/transparent"
+        android:elevation="0dp"
         app:elevation="0dp">
 
         <com.google.android.material.appbar.MaterialToolbar
@@ -17,15 +17,12 @@
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
             android:background="@android:color/transparent"
-            app:layout_scrollFlags="scroll|enterAlways"
-            app:title="@string/app_name"
+            app:menu="@menu/menu_main"
+            app:title=""
             app:titleTextColor="@color/text_primary" />
 
     </com.google.android.material.appbar.AppBarLayout>
 
-    <!-- Choose ONE of these two blocks based on your navigation strategy -->
-
-    <!-- Option 1: If you're using Navigation component -->
     <androidx.fragment.app.FragmentContainerView
         android:id="@+id/nav_host_fragment"
         android:name="androidx.navigation.fragment.NavHostFragment"
@@ -35,8 +32,6 @@
         app:layout_behavior="@string/appbar_scrolling_view_behavior"
         app:navGraph="@navigation/nav_graph" />
 
-    <!-- Option 2: If you're using direct content -->
-    <!--
     <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -46,88 +41,67 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:padding="16dp">
+            android:padding="24dp">
 
+            <!-- Hero Section -->
             <TextView
-                android:id="@+id/welcomeTitle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:fontFamily="@font/poppins_bold"
-                android:text="@string/welcome_title"
-                android:textColor="@color/text_primary"
-                android:textSize="28sp" />
+                android:text="Transform Your\nArtistic Vision"
+                android:textAppearance="?attr/textAppearanceHeadlineLarge"
+                android:textColor="@color/text_primary" />
 
             <TextView
-                android:id="@+id/welcomeSubtitle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
-                android:text="@string/welcome_subtitle"
-                android:textColor="@color/text_secondary"
-                android:textSize="16sp" />
+                android:text="Create beautiful paint-by-numbers artwork with ease"
+                android:textAppearance="?attr/textAppearanceBodyLarge"
+                android:textColor="@color/text_secondary" />
 
+            <!-- Get Started Card -->
             <com.google.android.material.card.MaterialCardView
-                android:id="@+id/uploadCard"
+                android:id="@+id/getStartedCard"
                 android:layout_width="match_parent"
                 android:layout_height="200dp"
-                android:layout_marginTop="24dp"
-                app:cardCornerRadius="16dp"
+                android:layout_marginTop="32dp"
+                app:cardCornerRadius="24dp"
                 app:cardElevation="4dp">
 
-                <FrameLayout
+                <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent">
+                    android:layout_height="match_parent"
+                    android:background="@drawable/gradient_card_background"
+                    android:gravity="center"
+                    android:orientation="vertical"
+                    android:padding="24dp">
 
                     <ImageView
-                        android:id="@+id/imagePreview"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:scaleType="centerCrop" />
+                        android:layout_width="64dp"
+                        android:layout_height="64dp"
+                        android:src="@drawable/ic_upload_artwork"
+                        app:tint="@color/on_primary" />
 
-                    <LinearLayout
-                        android:id="@+id/uploadPrompt"
+                    <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:gravity="center"
-                        android:orientation="vertical">
+                        android:layout_marginTop="16dp"
+                        android:text="Start Creating"
+                        android:textAppearance="?attr/textAppearanceHeadlineMedium"
+                        android:textColor="@color/on_primary" />
 
-                        <ImageView
-                            android:layout_width="48dp"
-                            android:layout_height="48dp"
-                            android:src="@drawable/ic_upload"
-                            app:tint="@color/primary" />
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="8dp"
-                            android:text="@string/tap_to_upload"
-                            android:textColor="@color/text_primary" />
-
-                    </LinearLayout>
-
-                </FrameLayout>
+                </LinearLayout>
 
             </com.google.android.material.card.MaterialCardView>
 
-            <com.google.android.material.button.MaterialButton
-                android:id="@+id/btnStart"
-                android:layout_width="match_parent"
-                android:layout_height="56dp"
-                android:layout_marginTop="24dp"
-                android:enabled="false"
-                android:text="@string/start_creating"
-                android:textSize="16sp"
-                app:cornerRadius="28dp" />
-
+            <!-- Recent Works Section -->
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="32dp"
-                android:text="@string/recent_works"
-                android:textColor="@color/text_primary"
-                android:textSize="20sp" />
+                android:text="Recent Works"
+                android:textAppearance="?attr/textAppearanceHeadlineMedium"
+                android:textColor="@color/text_primary" />
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/recentWorksRecyclerView"
@@ -136,11 +110,11 @@
                 android:layout_marginTop="16dp"
                 android:clipToPadding="false"
                 android:orientation="horizontal"
+                android:paddingHorizontal="-12dp"
                 app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
 
         </LinearLayout>
 
     </androidx.core.widget.NestedScrollView>
-    -->
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

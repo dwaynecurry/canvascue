@@ -7,14 +7,15 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.fragment.app.Fragment
-import com.canvascue.R
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
+import androidx.lifecycle.repeatOnLifecycle
 import androidx.navigation.fragment.findNavController
+import com.canvascue.R
 import com.canvascue.databinding.FragmentWorkspaceBinding
 import com.google.android.material.snackbar.Snackbar
 import dagger.hilt.android.AndroidEntryPoint
-import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
 
 @AndroidEntryPoint
@@ -69,26 +70,38 @@ class WorkspaceFragment : Fragment() {
 
     private fun observeViewModel() {
         viewLifecycleOwner.lifecycleScope.launch {
-            viewModel.events.collect { event ->
-                when (event) {
-                    is WorkspaceEvent.NavigateToEditor -> {
-                        findNavController().navigate(
-                            WorkspaceFragmentDirections.actionWorkspaceToEditor(event.projectId)
-                        )
-                    }
-                    is WorkspaceEvent.ShowError -> {
-                        Snackbar.make(binding.root, event.message, Snackbar.LENGTH_LONG).show()
-                    }
-                    null -> { /* Handle null case */ }
+            viewLifecycleOwner.repeatOnLifecycle(Lifecycle.State.STARTED) {
+                viewModel.events.collect { event ->
+                    handleEvent(event)
                 }
             }
         }
 
         viewLifecycleOwner.lifecycleScope.launch {
-            viewModel.isLoading.collect { isLoading ->
-                binding.progressIndicator.visibility = if (isLoading) View.VISIBLE else View.GONE
+            viewLifecycleOwner.repeatOnLifecycle(Lifecycle.State.STARTED) {
+                viewModel.isLoading.collect { isLoading ->
+                    binding.progressIndicator.visibility = if (isLoading) View.VISIBLE else View.GONE
+                }
             }
         }
+    }
+
+    private fun handleEvent(event: WorkspaceEvent?) {
+        when (event) {
+            is WorkspaceEvent.NavigateToEditor -> {
+                val action = WorkspaceFragmentDirections.actionWorkspaceToEditor(event.projectId)
+                findNavController().navigate(action)
+            }
+            is WorkspaceEvent.ShowError -> {
+                Snackbar.make(
+                    binding.root,
+                    event.message,
+                    Snackbar.LENGTH_LONG
+                ).show()
+            }
+            null -> { /* Handle null case */ }
+        }
+
     }
 
     private fun handleSelectedImage(uri: Uri) {

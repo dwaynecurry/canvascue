@@ -10,7 +10,11 @@
         android:label="Home">
         <action
             android:id="@+id/action_home_to_workspace"
-            app:destination="@id/workspaceFragment" />
+            app:destination="@id/workspaceFragment"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim"
+            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+            app:popExitAnim="@anim/nav_default_pop_exit_anim" />
     </fragment>
 
     <fragment
@@ -19,7 +23,11 @@
         android:label="Workspace">
         <action
             android:id="@+id/action_workspace_to_editor"
-            app:destination="@id/editorFragment">
+            app:destination="@id/editorFragment"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim"
+            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+            app:popExitAnim="@anim/nav_default_pop_exit_anim">
             <argument
                 android:name="projectId"
                 app:argType="long" />
